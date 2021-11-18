@@ -10,7 +10,7 @@ This is an adption of python PRN implementation.
 
 2. Download FASD data set at [HessenBox](https://hessenbox.tu-darmstadt.de/getlink/fiTgGfkGrAcY9tbA6PmdFbf2/casia-fasd-frames-only.zip) and copy its content in ../
 
-- $ conda env create -f environment.yml
+- $ conda env create -f env.yml
 
 For test_release frames: 
 
