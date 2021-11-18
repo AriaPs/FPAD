@@ -1,6 +1,6 @@
-# Joint 3D Face Reconstruction and Dense Alignment with Position Map Regression Network
+# Depth Map Generation for FASD Data Set
 
-This is adption of python PRN implementation. 
+This is an adption of python PRN implementation. 
 
 
 
