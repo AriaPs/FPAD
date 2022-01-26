@@ -25,18 +25,18 @@ def main(args):
     prn = PRN(is_dlib = args.isDlib)
 
     # ------------- load data
-    image_folder = args.inputDir
-    
     if args.isTest :
         prefix_len = len('../casia-fasd-frames/test_release/')
+        image_folder = '../casia-fasd-frames/test_release/'
     else:
         prefix_len = len('../casia-fasd-frames/train_release/')
+        image_folder = '../casia-fasd-frames/train_release/'
     
     types = ('*.jpg', '*.png')
     image_folder_list = []
     save_folder_list = []
     for root, directories, files in os.walk(image_folder, topdown=False):
-        if len(root) > prefix_len and (root[-1] == "1" or root[-1] == "2" or root[-1] == "HR_1") :
+        if len(root) > prefix_len and (root[-1] == "1" or root[-1] == "2" or root[-2:] == "_1") :
             image_folder_list.append(root)
             if args.isTest :
                 save_folder_list.append(root.replace('test_release', 'test_release_out'))
@@ -70,10 +70,6 @@ def main(args):
 
             # the core: regress position map
             if args.isDlib:
-                max_size = max(image.shape[0], image.shape[1])
-                if max_size> 1000:
-                    image = rescale(image, 1000./max_size)
-                    image = (image*255).astype(np.uint8)
                 pos = prn.process(image) # use dlib to detect face
             else:
                 if image.shape[0] == image.shape[1]:
